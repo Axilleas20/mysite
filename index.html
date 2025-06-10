@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Για την Ειήνη μου ❤️</title>
+  <title>Για την Ειηνη μου ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -177,6 +178,160 @@
       background-color: #f00;
       opacity: 0;
       z-index: 999;
+      pointer-events: none;
+    }
+    
+    /* Gallery styles */
+    .gallery {
+      display: none;
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      animation: fadeInUp 0.8s;
+    }
+    
+    .gallery-title {
+      font-family: 'Dancing Script', cursive;
+      color: #d23669;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .gallery-item {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.1);
+      border-color: #ff758c;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .gallery-controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .gallery-btn {
+      background: #d23669;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .gallery-btn:hover {
+      transform: scale(1.1);
+      background: #ff7eb3;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.5s;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(255, 117, 140, 0.7);
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: all 0.3s;
+    }
+    
+    .close-modal:hover {
+      color: #ff7eb3;
+      transform: scale(1.2);
+    }
+    
+    /* Love note */
+    .love-note {
+      position: absolute;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      max-width: 200px;
+      display: none;
+      z-index: 500;
+      animation: fadeIn 0.5s;
+      font-family: 'Dancing Script', cursive;
+      color: #d23669;
+      font-size: 1.2rem;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .photo-frame {
+        width: 250px;
+        height: 250px;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .gallery-item {
+        width: 80px;
+        height: 80px;
+      }
     }
   </style>
 </head>
@@ -188,10 +343,10 @@
     <h2>Σου έφτιαξα αυτό το μικρό κόσμο για να μας θυμάσαι για πάντα</h2>
     
     <div class="photo-frame">
-      <img src="pig.jpg" alt="Η αγαπημένη μας φωτογραφία">
+      <img src="pig.jpg" alt="Η αγαπημένη μας φωτογραφία" id="mainPhoto">
     </div>
     
-    <audio controls>
+    <audio controls id="loveSong">
       <source src="Katile.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
@@ -203,16 +358,45 @@
     
     <button class="memory-btn" id="memoryBtn">Πάτησε για μια έκπληξη!</button>
     
+    <div class="gallery" id="memoryGallery">
+      <div class="gallery-title">Αγαπημένες μας στιγμές</div>
+      <div class="gallery-container" id="galleryContainer">
+        <!-- Gallery items will be added dynamically -->
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="gallery-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    
     <div class="footer">
       Made with love & magic ✨
     </div>
   </div>
 
+  <!-- Modal for full-size images -->
+  <div class="modal" id="imageModal">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Ενεργή φωτογραφία">
+    </div>
+  </div>
+
   <script>
+    // Gallery images data
+    const memories = [
+      { src: 'memory1.jpg', caption: 'Η πρώτη μας βραδιά' },
+      { src: 'memory2.jpg', caption: 'Στα χιονισμένα βουνά' },
+      { src: 'memory3.jpg', caption: 'Στο αγαπημένο μας ταξίδι' },
+      { src: 'memory4.jpg', caption: 'Στο πάρκο με τα σκυλάκια' },
+      { src: 'memory6.jpg', caption: 'Στο καφέ της γειτονιάς' },
+      { src: 'memory7.jpg', caption: 'Στο ηλιοβασίλεμα' },
+    ];
+
     // Create floating hearts
     function createHearts() {
       const container = document.getElementById('hearts-container');
-      const heartCount = 20;
+      const heartCount = 30;
       
       for (let i = 0; i < heartCount; i++) {
         const heart = document.createElement('div');
@@ -230,18 +414,19 @@
       }
     }
     
-    // Confetti effect
+    // Enhanced confetti effect
     function createConfetti() {
-      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff9900', '#ff66cc'];
+      const shapes = ['❦', '❤', '💖', '💕', '💘', '💝', '💗', '💓', '💞'];
       
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 150; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+        confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
         confetti.style.left = Math.random() * window.innerWidth + 'px';
         confetti.style.top = window.innerHeight + 'px';
-        confetti.style.width = (Math.random() * 10 + 5) + 'px';
-        confetti.style.height = (Math.random() * 10 + 5) + 'px';
         
         document.body.appendChild(confetti);
         
@@ -253,9 +438,9 @@
             transform: 'rotate(0deg)'
           },
           { 
-            top: -10 + 'px',
+            top: -50 + 'px',
             opacity: 0,
-            transform: 'rotate(' + (Math.random() * 360) + 'deg)'
+            transform: 'rotate(' + (Math.random() * 720) + 'deg)'
           }
         ], {
           duration: Math.random() * 3000 + 2000,
@@ -266,11 +451,113 @@
       }
     }
     
+    // Initialize gallery
+    function initGallery() {
+      const galleryContainer = document.getElementById('galleryContainer');
+      
+      memories.forEach((memory, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.classList.add('gallery-item');
+        galleryItem.innerHTML = `<img src="${memory.src}" alt="${memory.caption}" data-index="${index}">`;
+        galleryContainer.appendChild(galleryItem);
+      });
+      
+      // Add event listeners to gallery items
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const index = this.querySelector('img').getAttribute('data-index');
+          showImageModal(index);
+        });
+      });
+      
+      // Gallery navigation
+      let currentIndex = 0;
+      
+      document.getElementById('nextBtn').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % memories.length;
+        showImageModal(currentIndex);
+      });
+      
+      document.getElementById('prevBtn').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + memories.length) % memories.length;
+        showImageModal(currentIndex);
+      });
+    }
+    
+    // Show image modal
+    function showImageModal(index) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      
+      modalImage.src = memories[index].src;
+      modalImage.alt = memories[index].caption;
+      modal.style.display = 'flex';
+      
+      // Update main photo
+      document.getElementById('mainPhoto').src = memories[index].src;
+    }
+    
+    // Close modal
+    document.getElementById('closeModal').addEventListener('click', function() {
+      document.getElementById('imageModal').style.display = 'none';
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+    
+    // Create random love note
+    function createLoveNote() {
+      const notes = [
+        "Σ' αγαπώ! ❤️",
+        "Είσαι το παν για μένα! 💖",
+        "Δική μου για πάντα... 💘",
+        "Η ζωή μου χωρίς εσένα; Αδύνατη! 💕",
+        "Σε λατρεύω! 😍",
+        "Είσαι η ομορφιά μου! ✨",
+        "Μακάρι να ήσουν εδώ τώρα... 💌"
+      ];
+      
+      const note = document.createElement('div');
+      note.classList.add('love-note');
+      note.textContent = notes[Math.floor(Math.random() * notes.length)];
+      
+      // Random position
+      note.style.left = Math.random() * 70 + 15 + '%';
+      note.style.top = Math.random() * 70 + 15 + '%';
+      
+      document.body.appendChild(note);
+      
+      // Show note
+      note.style.display = 'block';
+      
+      // Remove after some time
+      setTimeout(() => {
+        note.style.opacity = '0';
+        setTimeout(() => {
+          note.remove();
+        }, 1000);
+      }, 3000);
+    }
+    
     // Memory button click event
     document.getElementById('memoryBtn').addEventListener('click', function() {
       createConfetti();
       this.textContent = "Σ' αγαπώ πολύ! 😍";
       this.style.animation = 'none';
+      
+      // Show gallery
+      document.getElementById('memoryGallery').style.display = 'block';
+      
+      // Create love note
+      createLoveNote();
+      
+      // Play love song
+      document.getElementById('loveSong').play();
       
       setTimeout(() => {
         this.style.animation = 'pulse 2s infinite';
@@ -278,7 +565,16 @@
     });
     
     // Initialize
-    window.addEventListener('load', createHearts);
+    window.addEventListener('load', function() {
+      createHearts();
+      initGallery();
+      
+      // Create hearts continuously
+      setInterval(createHearts, 5000);
+      
+      // Create random love notes occasionally
+      setInterval(createLoveNote, 10000);
+    });
   </script>
 </body>
 </html>
