@@ -2,528 +2,224 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Για την Ειηνη μου ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Για την Ειρηνη μου ❤️</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    html { font-size: 16px; }
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      text-align: center;
-      color: #333;
+      background: url('https://images.unsplash.com/photo-1504199362362-c6c9d5f182f2?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex; justify-content: center; align-items: center;
+      position: relative; color: #333; padding: 2rem;
     }
     .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      position: relative;
+      width: 100%; max-width: 32rem;
+      padding: 2rem;
+      background: rgba(255,255,255,0.95);
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.1);
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      position: relative; z-index: 2;
+      margin: auto;
     }
     h1 {
       font-family: 'Dancing Script', cursive;
-      font-size: 3rem;
-      color: #d23669;
-      margin-bottom: 0;
-      animation: fadeIn 2s, float 3s infinite ease-in-out;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 2.8rem; color: #d23669;
+      animation: fadeIn 1.5s ease-in-out;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
     h2 {
-      font-weight: 300;
-      margin-top: 10px;
-      animation: fadeIn 2.5s;
-    }
-    .photo-frame {
-      width: 320px;
-      height: 320px;
-      margin: 30px auto;
-      border: 15px solid white;
-      border-radius: 5px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      transform: rotate(-3deg);
-      animation: fadeIn 3s, float 6s infinite ease-in-out;
-      transition: all 0.3s;
-      background-color: white;
-    }
-    .photo-frame:hover {
-      transform: rotate(0deg) scale(1.05);
-    }
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    .photo-frame:hover img {
-      transform: scale(1.1);
-    }
-    .hearts {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: -1;
-    }
-    .heart {
-      position: absolute;
-      font-size: 20px;
-      color: rgba(210, 54, 105, 0.6);
-      animation: float 4s infinite ease-in-out;
-    }
-    .message {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin: 30px 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 3s;
-      transform-style: preserve-3d;
-    }
-    audio {
-      margin: 20px 0;
-      width: 300px;
-      animation: fadeIn 4s;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 50px;
-    }
-    .footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #666;
-      animation: fadeIn 5s;
-    }
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes float {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      font-weight: 300; font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      animation: slideIn 2s ease-in-out, pulse 3s infinite;
     }
     @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
-    /* Floating hearts animation */
-    @keyframes heartFloat {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
+    .date {
+      font-size: 0.9rem; color: #a66;
+      margin-bottom: 1.5rem; letter-spacing: 0.05em;
     }
-    /* Button style */
-    .memory-btn {
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
-      border: none;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 50px;
-      cursor: pointer;
-      margin: 20px 0;
-      box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
-      transition: all 0.3s;
-      animation: pulse 2s infinite;
-    }
-    .memory-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 117, 140, 0.6);
-    }
-    /* Confetti effect */
-    .confetti {
-      position: fixed;
-      width: 10px;
-      height: 10px;
-      background-color: #f00;
-      opacity: 0;
-      z-index: 999;
+    .emoji {
+      position: fixed; font-size: 1.8rem; opacity: 0.9;
       pointer-events: none;
+      animation: float 6s infinite ease-in-out alternate;
+      z-index: 1;
     }
-    /* Gallery styles */
-    .gallery {
-      display: none;
-      margin-top: 30px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      animation: fadeInUp 0.8s;
+    .emoji:hover { transform: scale(1.5) rotate(20deg); }
+    @keyframes float { from{transform:translateY(0) rotate(0deg);} to{transform:translateY(-20px) rotate(360deg);} }
+
+    .photo-wrapper {
+      width: 100%; max-width: 20rem;
+      margin-bottom: 1rem;
+      animation: zoomIn 2s ease;
     }
-    .gallery-title {
-      font-family: 'Dancing Script', cursive;
-      color: #d23669;
-      font-size: 2rem;
-      margin-bottom: 15px;
-    }
-    .gallery-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-    .gallery-item {
-      width: 100px;
-      height: 100px;
-      border-radius: 10px;
+    .photo-frame {
+      border: 0.5rem solid #fff;
+      border-radius: 0.5rem;
       overflow: hidden;
-      cursor: pointer;
-      transition: all 0.3s;
-      border: 3px solid white;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+      transition: transform 0.3s;
     }
-    .gallery-item:hover {
-      transform: scale(1.1);
-      border-color: #ff758c;
-    }
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .gallery-controls {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-    .gallery-btn {
-      background: #d23669;
-      color: white;
+    .photo-wrapper:hover .photo-frame { transform: rotate(0deg) scale(1.03); }
+    .photo-frame img { width:100%; display:block; transition: transform 0.3s ease-in-out; }
+    .photo-frame img:hover { transform: scale(1.05); }
+
+    .gift-btn {
+      background: #fff0f2;
       border: none;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .gallery-btn:hover {
-      transform: scale(1.1);
-      background: #ff7eb3;
-    }
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.5s;
-    }
-    .modal-content {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 40px rgba(255, 117, 140, 0.7);
-    }
-    .modal-content img {
-      width: 100%;
-      height: auto;
-      max-height: 80vh;
-      object-fit: contain;
-    }
-    .close-modal {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 40px;
-      cursor: pointer;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      transition: all 0.3s;
-    }
-    .close-modal:hover {
-      color: #ff7eb3;
-      transform: scale(1.2);
-    }
-    /* Love note */
-    .love-note {
-      position: absolute;
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      max-width: 200px;
-      display: none;
-      z-index: 500;
-      animation: fadeIn 0.5s;
-      font-family: 'Dancing Script', cursive;
+      padding: 0.75rem;
+      font-size: 1.8rem;
       color: #d23669;
-      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+      margin-bottom: 1.5rem;
     }
-    /* Responsive adjustments */
-    @media (max-width: 600px) {
-      .photo-frame {
-        width: 250px;
-        height: 250px;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      .gallery-item {
-        width: 80px;
-        height: 80px;
-      }
+    .gift-btn:hover { transform: scale(1.1); }
+
+    .audio-wrapper {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
     }
+    .audio-control {
+      background: #d23669; border: none; border-radius: 2rem;
+      padding: 0.75rem 1.5rem; font-size: 1.25rem;
+      color: #fff; cursor: pointer;
+      box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+    .audio-control:hover { background: #b72455; }
+    .audio-control i { font-size: 1.5rem; }
+    #waveCanvas { width:150px; height:40px; background: #fff; border-radius: 0.5rem; }
+    audio { display: none; }
+
+    .gallery { display: none; width: 100%; margin-bottom: 1.5rem; animation: fadeIn 2s ease-in-out; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(6rem,1fr)); gap: 0.75rem; }
+    .gallery-item { overflow: hidden; border-radius: 0.5rem; }
+    .gallery-item img {
+      width: 100%; display: block;
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.1) rotate(2deg);
+      filter: brightness(1.1) contrast(1.05);
+    }
+
+    .footer { font-size: 0.875rem; color: #666; margin-top: 1.5rem; }
+
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    @keyframes slideIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes zoomIn { from{transform:scale(0.9);opacity:0;} to{transform:scale(1);opacity:1;} }
   </style>
 </head>
 <body>
-  <div class="hearts" id="hearts-container"></div>
   <div class="container">
-    <h1>Για την Ειηνη μου ❤️</h1>
-    <h2>Σου έφτιαξα αυτό το μικρό κόσμο για να μας θυμάσαι για πάντα</h2>
-    <div class="photo-frame">
-      <img src="pig.jpg" alt="Η αγαπημένη μας φωτογραφία" id="mainPhoto">
+    <h1>Για την Ειρηνη μου ❤️</h1>
+    <h2>Σου αφιερώνω αυτόν τον μικρό μας κόσμο</h2>
+    <div class="date">20/10/2024</div>
+
+    <div class="photo-wrapper" id="photoWrapper">
+      <div class="photo-frame">
+        <img id="mainPhoto" src="pig.jpg" alt="Η αγαπημένη μας φωτογραφία">
+      </div>
     </div>
-    <audio controls id="loveSong">
+
+    <button class="gift-btn" id="giftBtn"><i class="fas fa-gift"></i></button>
+
+    <div class="audio-wrapper">
+      <button class="audio-control" id="audioBtn"><i class="fas fa-music"></i></button>
+      <canvas id="waveCanvas"></canvas>
+    </div>
+    <audio id="loveSong">
       <source src="Katile.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
     </audio>
+
     <div class="message">
-      <p>Κάθε φορά που ακούς αυτό το τραγούδι, να ξέρεις ότι σκέφτομαι εσένα...</p>
-      <p>❤️ Είσαι η μουσική της καρδιάς μου ❤️</p>
+      <p>Κάθε φορά που ακούς το τραγούδι, σκέψου πόσο σε αγαπώ...</p>
+      <p>✨ Είσαι το φως στην καρδιά μου ✨</p>
     </div>
-    <button class="memory-btn" id="memoryBtn">Πάτησε για μια έκπληξη!</button>
-    <div class="gallery" id="memoryGallery">
+
+    <div class="gallery" id="gallery">
       <div class="gallery-title">Αγαπημένες μας στιγμές</div>
-      <div class="gallery-container" id="galleryContainer">
-        <!-- Gallery items will be added dynamically -->
-      </div>
-      <div class="gallery-controls">
-        <button class="gallery-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <button class="gallery-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
     </div>
-    <div class="footer">
-      Made with love & magic ✨
-    </div>
+
+    <div class="footer">Σε ευχαριστώ που είσαι πάντα εδώ ✨</div>
   </div>
-  <!-- Modal for full-size images -->
-  <div class="modal" id="imageModal">
-    <span class="close-modal" id="closeModal">&times;</span>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="Ενεργή φωτογραφία">
-    </div>
-  </div>
+
   <script>
-    // Gallery images data
-    const memories = [{
-        src: 'memory1.jpg',
-        caption: 'Η πρώτη μας βραδιά'
-      },
-      {
-        src: 'memory2.jpg',
-        caption: 'Στα χιονισμένα βουνά'
-      },
-      {
-        src: 'memory3.jpg',
-        caption: 'Στο αγαπημένο μας ταξίδι'
-      },
-      {
-        src: 'memory4.jpg',
-        caption: 'Στο πάρκο με τα σκυλάκια'
-      },
-      {
-        src: 'memory5.jpg',
-        caption: 'Στο καφέ της γειτονιάς'
-      },
-      {
-        src: 'memory6.jpg',
-        caption: 'Στο ηλιοβασίλεμα'
-      }
-    ];
-    // Create floating hearts
-    function createHearts() {
-      const container = document.getElementById('hearts-container');
-      const heartCount = 30;
-      for (let i = 0; i < heartCount; i++) {
-        const heart = document.createElement('div');
-        heart.innerHTML = '❤';
-        heart.classList.add('heart');
-        // Random position and animation
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        container.appendChild(heart);
-      }
-    }
-    // Enhanced confetti effect
-    function createConfetti() {
-      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ff9900', '#ff66cc'];
-      const shapes = ['❦', '❤', '💖', '💕', '💘', '💝', '💗', '💓', '💞'];
-      for (let i = 0; i < 150; i++) {
-        const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
-        confetti.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
-        confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
-        confetti.style.left = Math.random() * window.innerWidth + 'px';
-        confetti.style.top = window.innerHeight + 'px';
-        document.body.appendChild(confetti);
-        // Animate
-        const animation = confetti.animate([{
-            top: window.innerHeight + 'px',
-            opacity: 1,
-            transform: 'rotate(0deg)'
-          },
-          {
-            top: -50 + 'px',
-            opacity: 0,
-            transform: 'rotate(' + (Math.random() * 720) + 'deg)'
-          }
-        ], {
-          duration: Math.random() * 3000 + 2000,
-          easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
-        });
-        animation.onfinish = () => confetti.remove();
-      }
-    }
-    // Initialize gallery
-    function initGallery() {
-      const galleryContainer = document.getElementById('galleryContainer');
-      memories.forEach((memory, index) => {
-        const galleryItem = document.createElement('div');
-        galleryItem.classList.add('gallery-item');
-        galleryItem.innerHTML = `<img src="${memory.src}" alt="${memory.caption}" data-index="${index}">`;
-        galleryContainer.appendChild(galleryItem);
+    const emojis=['🌹','💫','🕊️','💌','🌟'];
+    window.addEventListener('DOMContentLoaded',()=>{
+      emojis.forEach(e=>{
+        const span=document.createElement('div');
+        span.className='emoji';
+        span.textContent=e;
+        span.style.top= Math.random()*100+'vh';
+        span.style.left= Math.random()*100+'vw';
+        document.body.appendChild(span);
       });
-      // Add event listeners to gallery items
-      document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', function() {
-          const index = this.querySelector('img').getAttribute('data-index');
-          showImageModal(index);
-        });
-      });
-      // Gallery navigation
-      let currentIndex = 0;
-      document.getElementById('nextBtn').addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % memories.length;
-        showImageModal(currentIndex);
-      });
-      document.getElementById('prevBtn').addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + memories.length) % memories.length;
-        showImageModal(currentIndex);
+    });
+
+    const memories=['memory1.jpg','memory2.jpg','memory3.jpg','memory4.jpg','memory5.jpg','memory6.jpg'];
+    function openGallery(){
+      document.getElementById('giftBtn').style.display='none';
+      document.getElementById('gallery').style.display='block';
+      const grid=document.getElementById('galleryGrid');
+      grid.innerHTML='';
+      memories.forEach(src=>{
+        const div=document.createElement('div');
+        div.className='gallery-item';
+        div.innerHTML=`<img src="${src}" alt="moment">`;
+        grid.appendChild(div);
       });
     }
-    // Show image modal
-    function showImageModal(index) {
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      modalImage.src = memories[index].src;
-      modalImage.alt = memories[index].caption;
-      modal.style.display = 'flex';
-      // Update main photo
-      document.getElementById('mainPhoto').src = memories[index].src;
-    }
-    // Close modal
-    document.getElementById('closeModal').addEventListener('click', function() {
-      document.getElementById('imageModal').style.display = 'none';
-    });
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
-      const modal = document.getElementById('imageModal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
+    document.getElementById('giftBtn').onclick=openGallery;
+    document.getElementById('photoWrapper').onclick=openGallery;
+
+    const btn=document.getElementById('audioBtn'),song=document.getElementById('loveSong');
+    let audioCtx,analyser,dataArray,bufferLength;
+    const canvas=document.getElementById('waveCanvas'),ctx=canvas.getContext('2d');
+    btn.onclick=()=>{
+      if(!audioCtx){
+        audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+        const srcNode=audioCtx.createMediaElementSource(song);
+        analyser=audioCtx.createAnalyser();
+        analyser.fftSize=64;
+        srcNode.connect(analyser);
+        analyser.connect(audioCtx.destination);
+        bufferLength=analyser.frequencyBinCount;
+        dataArray=new Uint8Array(bufferLength);
+        drawWave();
       }
-    });
-    // Create random love note
-    function createLoveNote() {
-      const notes = [
-        "Σ' αγαπώ! ❤️",
-        "Είσαι το παν για μένα! 💖",
-        "Δική μου για πάντα... 💘",
-        "Η ζωή μου χωρίς εσένα; Αδύνατη! 💕",
-        "Σε λατρεύω! 😍",
-        "Είσαι η ομορφιά μου! ✨",
-        "Μακάρι να ήσουν εδώ τώρα... 💌"
-      ];
-      const note = document.createElement('div');
-      note.classList.add('love-note');
-      note.textContent = notes[Math.floor(Math.random() * notes.length)];
-      // Random position
-      note.style.left = Math.random() * 70 + 15 + '%';
-      note.style.top = Math.random() * 70 + 15 + '%';
-      document.body.appendChild(note);
-      // Show note
-      note.style.display = 'block';
-      // Remove after some time
-      setTimeout(() => {
-        note.style.opacity = '0';
-        setTimeout(() => {
-          note.remove();
-        }, 1000);
-      }, 3000);
+      if(song.paused){
+        song.play();
+        btn.innerHTML='<i class="fas fa-pause"></i>';
+      }else{
+        song.pause();
+        btn.innerHTML='<i class="fas fa-music"></i>';
+      }
     }
-    // Memory button click event
-    document.getElementById('memoryBtn').addEventListener('click', function() {
-      createConfetti();
-      this.textContent = "Σ' αγαπώ πολύ! 😍";
-      this.style.animation = 'none';
-      // Show gallery
-      document.getElementById('memoryGallery').style.display = 'block';
-      // Create love note
-      createLoveNote();
-      // Play love song
-      document.getElementById('loveSong').play();
-      setTimeout(() => {
-        this.style.animation = 'pulse 2s infinite';
-      }, 10);
-    });
-    // Initialize
-    window.addEventListener('load', function() {
-      createHearts();
-      initGallery();
-      // Create hearts continuously
-      setInterval(createHearts, 5000);
-      // Create random love notes occasionally
-      setInterval(createLoveNote, 10000);
-    });
+    function drawWave(){
+      requestAnimationFrame(drawWave);
+      analyser.getByteFrequencyData(dataArray);
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      const barWidth=canvas.width/bufferLength;
+      dataArray.forEach((v,i)=>{
+        const barHeight=v/255*canvas.height;
+        ctx.fillStyle='#d23669';
+        ctx.fillRect(i*barWidth,canvas.height-barHeight,barWidth*0.6,barHeight);
+      });
+    }
   </script>
 </body>
 </html>
