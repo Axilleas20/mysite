@@ -59,7 +59,7 @@
       width: 100%; max-width: 20rem;
       margin-bottom: 1rem;
       animation: zoomIn 2s ease;
-      cursor: pointer;
+      cursor: default;
     }
     .photo-frame {
       border: 0.5rem solid #fff;
@@ -158,7 +158,7 @@
     <h2>Σου αφιερώνω αυτόν τον μικρό μας κόσμο 💞💑💓💖💍</h2>
     <div class="date">20/10/2024 💗💓💝</div>
 
-    <div class="photo-wrapper" id="photoWrapper">
+    <div class="photo-wrapper">
       <div class="photo-frame">
         <img id="mainPhoto" src="pig.jpg" alt="Η αγαπημένη μας φωτογραφία">
       </div>
@@ -206,7 +206,6 @@
     }
 
     document.getElementById('giftBtn').onclick = openGallery;
-    document.getElementById('photoWrapper').onclick = openGallery;
 
     const audioBtn = document.getElementById('audioBtn');
     const song = document.getElementById('loveSong');
