@@ -4,100 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Για την Ειρήνη μου ❤️</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Custom font family for the 'Dancing Script' */
-        .font-dancing-script {
-            font-family: 'Dancing Script', cursive;
-        }
-        /* Custom font family for 'Inter' */
+        .font-dancing-script { font-family: 'Dancing Script', cursive; }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fce7f3; /* Fallback background */
+            background-color: #fce7f3;
         }
-        /* Style for the audio visualizer bars */
         .visualizer-bar {
-            background-color: #ec4899; /* pink-500 */
+            background-color: #ec4899;
             transition: height 0.1s ease-out;
         }
-        /* Simple fade-in animation for gallery items */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        /* 3D perspective for photo hover effect */
+        .fade-in { animation: fadeIn 1s ease-out forwards; }
         .perspective-1000 { perspective: 1000px; }
         .rotate-y-2 { transform: rotateY(2deg); }
         .group:hover .group-hover\:rotate-y-0 { transform: rotateY(0); }
         .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
-
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 sm:p-6 lg:p-8">
-    <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="romantic.jpg" 
-             onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/fbcfe8/db2777?text=Romantic+Background';"
-             alt="Romantic background" 
-             class="w-full h-full object-cover">
+        <img src="romantic.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/fbcfe8/db2777?text=Romantic+Background';" alt="Romantic background" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/30"></div>
     </div>
 
-    <!-- Main Content Container -->
-    <main class="relative z-10 w-full max-w-lg bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8 text-center transition-all duration-500 transform hover:scale-[1.01]">
-        
+    <main class="relative z-10 w-full max-w-lg bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8 text-center transition-transform duration-500 hover:scale-[1.01]">
         <h1 class="font-dancing-script text-5xl text-pink-600 mb-2">Για την Ειρήνη μου ❤️🥰💋💓💗</h1>
         <h2 class="text-gray-600 text-lg mb-2">Σου αφιερώνω αυτόν τον μικρό μας κόσμο 💞💑💓💖💍</h2>
         <p class="text-sm text-gray-500 mb-6 tracking-wider">20/10/2024 💗💓💝</p>
 
-        <!-- Main Photo -->
         <div class="group perspective-1000 mb-6">
             <div class="relative w-full max-w-xs mx-auto transition-transform duration-500 group-hover:scale-105 group-hover:rotate-y-0 rotate-y-2">
-                <img id="mainPhoto" 
-                     src="pig.jpg" 
-                     onerror="this.onerror=null;this.src='https://placehold.co/400x400/fbcfe8/db2777?text=Image+Error';"
-                     alt="Η αγαπημένη μας φωτογραφία" 
-                     class="rounded-lg shadow-xl border-4 border-white w-full h-auto object-cover">
+                <img id="mainPhoto" src="pig.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fbcfe8/db2777?text=Image+Error';" alt="Η αγαπημένη μας φωτογραφία" class="rounded-lg shadow-xl border-4 border-white w-full h-auto object-cover">
             </div>
         </div>
-        
-        <!-- Gift Button -->
-        <button id="giftBtn" class="bg-pink-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl shadow-lg hover:bg-pink-600 hover:scale-110 transition-all duration-300 mx-auto mb-6 focus:outline-none focus:ring-4 focus:ring-pink-300">
+
+        <button id="giftBtn" class="bg-pink-500 text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl shadow-lg hover:bg-pink-600 hover:scale-110 transition duration-300 mx-auto mb-6">
             <i class="fas fa-gift"></i>
         </button>
 
-        <!-- Audio Player -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <button id="audioBtn" class="bg-pink-500 text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-md hover:bg-pink-600 hover:scale-110 transition-transform duration-300 focus:outline-none focus:ring-4 focus:ring-pink-300">
+            <button id="audioBtn" class="bg-pink-500 text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-md hover:bg-pink-600 hover:scale-110 transition duration-300">
                 <i id="audioIcon" class="fas fa-music"></i>
             </button>
-            <div id="waveCanvas" class="w-48 h-12 bg-gray-200/50 rounded-lg flex items-end justify-center gap-px p-1">
-                <!-- Visualizer bars will be injected here -->
-            </div>
+            <div id="waveCanvas" class="w-48 h-12 bg-gray-200/50 rounded-lg flex items-end justify-center gap-px p-1"></div>
         </div>
+
         <audio id="loveSong">
-             <source src="Katile.mp3" type="audio/mpeg">
+            <source src="Katile.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- Memories Gallery -->
-        <div id="gallery" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mt-6">
-            <!-- Gallery items will be injected here -->
-        </div>
+        <div id="gallery" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mt-6"></div>
 
         <footer class="text-sm text-gray-600 mt-8 pt-6 border-t border-gray-200">
             Σε ευχαριστώ που είσαι πάντα εδώ ✨💗💝💘💓💞😍💖
@@ -106,7 +76,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Configuration ---
             const memories = [
                 { src: 'memory1.jpg', title: 'Η πρώτη μας βραδιά' },
                 { src: 'memory2.jpg', title: 'Στα χιονισμένα βουνά' },
@@ -116,7 +85,6 @@
             ];
             const VISUALIZER_BARS = 32;
 
-            // --- DOM Elements ---
             const giftBtn = document.getElementById('giftBtn');
             const gallery = document.getElementById('gallery');
             const audioBtn = document.getElementById('audioBtn');
@@ -124,34 +92,27 @@
             const song = document.getElementById('loveSong');
             const waveCanvas = document.getElementById('waveCanvas');
 
-            // --- Audio API State ---
             let audioCtx, analyser, sourceNode, dataArray;
             let isAudioInitialized = false;
+            let isPlaying = false;
 
-            // --- Gallery ---
             giftBtn.addEventListener('click', () => {
                 giftBtn.classList.add('hidden');
                 gallery.classList.remove('hidden');
-                gallery.innerHTML = ''; // Clear previous items
+                gallery.innerHTML = '';
 
                 memories.forEach((mem, index) => {
                     const item = document.createElement('div');
                     item.className = 'fade-in group';
                     item.style.animationDelay = `${index * 150}ms`;
                     item.innerHTML = `
-                        <img src="${mem.src}" 
-                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/fbcfe8/db2777?text=Image+Error';"
-                             alt="${mem.title}" 
-                             class="rounded-lg shadow-md w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105">
+                        <img src="${mem.src}" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fbcfe8/db2777?text=Image+Error';" alt="${mem.title}" class="rounded-lg shadow-md w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105">
                         <p class="mt-2 text-sm font-semibold text-pink-600">${mem.title}</p>
                     `;
                     gallery.appendChild(item);
                 });
             });
 
-            // --- Audio Player & Visualizer ---
-
-            // 1. Initialize Visualizer Bars
             for (let i = 0; i < VISUALIZER_BARS; i++) {
                 const bar = document.createElement('div');
                 bar.className = 'visualizer-bar w-full rounded-full';
@@ -160,22 +121,16 @@
             }
             const visualizerBars = waveCanvas.children;
 
-            // 2. Setup Audio Context (only once on first user interaction)
             const setupAudioContext = () => {
                 if (isAudioInitialized) return;
-                
                 try {
                     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                     analyser = audioCtx.createAnalyser();
                     analyser.fftSize = 256;
-                    
                     sourceNode = audioCtx.createMediaElementSource(song);
                     sourceNode.connect(analyser);
                     analyser.connect(audioCtx.destination);
-                    
-                    const bufferLength = analyser.frequencyBinCount;
-                    dataArray = new Uint8Array(bufferLength);
-                    
+                    dataArray = new Uint8Array(analyser.frequencyBinCount);
                     isAudioInitialized = true;
                     drawWave();
                 } catch (e) {
@@ -184,62 +139,42 @@
                 }
             };
 
-            // 3. Toggle Play/Pause
-            audioBtn.addEventListener('click', () => {
-                if (!isAudioInitialized) {
-                    setupAudioContext();
-                }
-                
-                if (!isAudioInitialized) return; // Don't proceed if initialization failed
+            audioBtn.addEventListener('click', async () => {
+                if (!isAudioInitialized) setupAudioContext();
+                if (!isAudioInitialized) return;
+                if (audioCtx.state === 'suspended') await audioCtx.resume();
 
-                if (audioCtx.state === 'suspended') {
-                    audioCtx.resume();
-                }
-
-                if (song.paused) {
-                    song.play().catch(e => console.error("Audio playback failed:", e));
-                } else {
+                if (song.paused && !isPlaying) {
+                    isPlaying = true;
+                    try {
+                        await song.play();
+                    } catch (e) {
+                        console.error("Audio playback failed:", e);
+                        isPlaying = false;
+                    }
+                } else if (!song.paused) {
                     song.pause();
+                    isPlaying = false;
                 }
             });
 
-            song.addEventListener('play', () => {
-                audioIcon.className = 'fas fa-pause';
-            });
+            song.addEventListener('play', () => audioIcon.className = 'fas fa-pause');
+            song.addEventListener('pause', () => audioIcon.className = 'fas fa-music');
 
-            song.addEventListener('pause', () => {
-                audioIcon.className = 'fas fa-music';
-            });
-
-            // 4. Drawing the Visualizer
             const drawWave = () => {
-                if (!isAudioInitialized) {
-                    return;
-                }
+                if (!isAudioInitialized) return;
                 requestAnimationFrame(drawWave);
-                
                 if(song.paused) {
-                     // Reset bars when paused
-                     for (let i = 0; i < visualizerBars.length; i++) {
-                        visualizerBars[i].style.height = `5%`;
-                    }
+                    for (let bar of visualizerBars) bar.style.height = `5%`;
                     return;
                 }
-                
                 analyser.getByteFrequencyData(dataArray);
-
                 const step = Math.floor(dataArray.length / VISUALIZER_BARS);
-
                 for (let i = 0; i < VISUALIZER_BARS; i++) {
-                    let value = dataArray[i * step];
-                    let percent = value / 255 * 100;
-                    if (visualizerBars[i]) {
-                        visualizerBars[i].style.height = `${Math.max(5, percent)}%`;
-                    }
+                    let percent = dataArray[i * step] / 255 * 100;
+                    visualizerBars[i].style.height = `${Math.max(5, percent)}%`;
                 }
             };
-            
-            // Initial call to set paused state bars
             drawWave();
         });
     </script>
